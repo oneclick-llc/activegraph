@@ -46,6 +46,8 @@ jobs:
       with:
         ruby-version: 3.3.1
         bundler-cache: true
+      env:
+        BUNDLE_RUBYGEMS__PKG__GITHUB__COM: ${{ secrets.BUNDLE_RUBYGEMS__PKG__GITHUB__COM }}
 
     - name: Dry run for getting a version
       id: get_tag_version
