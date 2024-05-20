@@ -78,6 +78,8 @@ module ActiveGraph
       register_neo4j_cypher_logging
 
       method = url.is_a?(Enumerable) ? :routing_driver : :driver
+
+      config[:logger] ||= Rails.logger if ENV.fetch('ENV', nil) == 'staging'
       Neo4j::Driver::GraphDatabase.send(method, url, auth_token, **config)
     end
 
